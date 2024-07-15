@@ -26,7 +26,7 @@ public class TopicoController {
     public void criar(@RequestBody @Valid DadosCriacaoTopico dados){
     var topico = new Topico(dados);
     topico.setStatus(Status.ABERTO);
-        var autorDoTopico = repositoryUsuario.findByEmail(dados.login());
+        var autorDoTopico = repositoryUsuario.AcharPeloEmail(dados.login());
     repository.save(topico);
         System.out.println(autorDoTopico);
     topico.setAutor(autorDoTopico.get(0));
